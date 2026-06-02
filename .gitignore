@@ -1,0 +1,25 @@
+# Entorno virtual
+venv/
+.venv/
+
+# Variables de entorno
+.env
+
+# Python compilado
+__pycache__/
+*.pyc
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Carpetas innecesarias
+aria_negative_samples/
+aria_samples/
+aria_verifier/
+
+# Archivos innecesarios
+test_verifier_debug.py
+test_wake_word_install.py
+test_wav.py
+train_verifier.py
