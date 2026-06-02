@@ -141,4 +141,4 @@ Este módulo forma parte de un sistema mayor de asistente virtual para una **cas
 
 ## 👥 Equipo
 
-Proyecto desarrollado en la **Fundación Universitaria Konrad Lorenz** como parte del proyecto de grado — INCLUSIVE_TECH.
+Proyecto desarrollado en la **Fundación Universitaria Konrad Lorenz** como parte del proyecto de grado - INCLUSIVE_TECH.
