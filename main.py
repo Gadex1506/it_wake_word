@@ -25,7 +25,7 @@ async def main() -> None:
     try:
         await listener.start()
     except KeyboardInterrupt:
-        logger.info("Preceso wake word detenido por el usuario.")
+        logger.info("Proceso wake word detenido por el usuario.")
     finally:
         listener.cleanup()
 

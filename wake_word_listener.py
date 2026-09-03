@@ -63,7 +63,7 @@ AUDIO_CHANNELS = 1
 # Configuracion desde .env
 # =============================================================
 
-WAKE_WORD_MODEL = os.getenv("WAKE_WORD_MODEL", "nova")
+WAKE_WORD_MODEL = os.getenv("WAKE_WORD_MODEL", "emma")
 WAKE_WORD_THRESHOLD = float(os.getenv("WAKE_WORD_THRESHOLD", "0.4"))
 WEBSOCKET_HOST = os.getenv("UNITY_SOCKET_HOST", "127.0.0.1")
 WEBSOCKET_PORT = int(os.getenv("UNITY_SOCKET_PORT", "9000"))
