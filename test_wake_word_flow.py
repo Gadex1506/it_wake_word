@@ -22,7 +22,7 @@ async def simulate_unity_client() -> None:
         async with websockets.connect(WEBSOCKET_URL) as websocket:
             logger.info("Conectado al servidor wake word.")
             logger.info("Esperando deteccion de wake word.")
-            logger.info("Di 'Emma' frente al microfono.")
+            logger.info("Di 'Mia' frente al microfono.")
 
             # Esperar mensajes del servidor
             while True:
