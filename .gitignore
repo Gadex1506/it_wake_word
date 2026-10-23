@@ -23,3 +23,6 @@ test_verifier_debug.py
 test_wake_word_install.py
 test_wav.py
 train_verifier.py
+
+# Configuraciones de IDE
+.vscode/
