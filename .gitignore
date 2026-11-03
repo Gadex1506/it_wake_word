@@ -13,16 +13,16 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Carpetas innecesarias
+# Datos de grabaciones locales
 aria_negative_samples/
 aria_samples/
 aria_verifier/
 
-# Archivos innecesarios
-test_verifier_debug.py
-test_wake_word_install.py
-test_wav.py
-train_verifier.py
+# Scripts locales de diagnostico/entrenamiento (no forman parte del servicio)
+scripts/train_verifier.py
+tests/manual/test_verifier_debug.py
+tests/manual/test_wake_word_install.py
+tests/manual/test_wav.py
 
 # Configuraciones de IDE
 .vscode/
