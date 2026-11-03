@@ -122,10 +122,13 @@ class WakeWordListener:
         """
         while not self._stop.is_set():
             try:
-                with MicrophoneStream(self._settings.microphone_index) as mic:
+                with MicrophoneStream(
+                    self._settings.microphone_index,
+                    self._settings.microphone_name,
+                ) as mic:
                     logger.info(
-                        f"Microfono activo. Umbral de deteccion: "
-                        f"{self._settings.threshold}"
+                        f"Microfono activo: '{mic.device_name}'. "
+                        f"Umbral de deteccion: {self._settings.threshold}"
                     )
                     logger.info("Escuchando... Di la palabra de activacion.")
 

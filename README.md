@@ -62,7 +62,8 @@ cp .env.example .env
 | `WAKE_WORD_PATIENCE` | `1` | Frames consecutivos (80 ms) sobre el umbral para confirmar. |
 | `ENERGY_GATE_RMS` | `0` (off) | Nivel RMS bajo el cual no se ejecuta el modelo. Ver *Optimización*. |
 | `UNITY_SOCKET_HOST` / `UNITY_SOCKET_PORT` | `127.0.0.1` / `9000` | Dónde escucha el servidor WebSocket. |
-| `MICROPHONE_INDEX` | `None` | Índice del micrófono. Ver `python -m scripts.list_microphones`. |
+| `MICROPHONE_NAME` | vacío | Fragmento del nombre del micrófono (el mismo que usa Unity). Si no hay coincidencia, usa el predeterminado del sistema. |
+| `MICROPHONE_INDEX` | `None` | Índice exacto del micrófono; tiene prioridad sobre `MICROPHONE_NAME`. Cambia entre PCs, mejor usar el nombre. |
 
 ---
 
@@ -132,7 +133,9 @@ El servicio está pensado para equipos de gama media y para convivir con Unity y
 python -m scripts.list_microphones
 ```
 
-La columna `16k` indica si el dispositivo acepta el formato del servicio. Los dispositivos virtuales (p. ej. SteelSeries Sonar) funcionan pero añaden una capa de procesamiento; si hay un micrófono físico con `si`, ponlo en `MICROPHONE_INDEX`. Los dispositivos WASAPI no aceptan 16 kHz.
+La columna `16k` indica si el dispositivo acepta el formato del servicio. Los dispositivos virtuales (p. ej. SteelSeries Sonar) funcionan pero añaden una capa de procesamiento. Los dispositivos WASAPI no aceptan 16 kHz.
+
+**Usar el mismo micrófono que Unity.** El servicio (que escucha "Mia") y Unity (que graba el comando) eligen su micrófono por separado. Para que sea el mismo en cualquier PC, pon en `MICROPHONE_NAME` un fragmento del nombre que usa Unity, por ejemplo `Arctis`. El servicio lo busca entre los dispositivos que aceptan 16 kHz (ignorando mayúsculas y tildes) y, si no lo encuentra, avisa en el log y usa el predeterminado de Windows. El log al arrancar indica cuál abrió: `Microfono activo: '...'`.
 
 ---
 

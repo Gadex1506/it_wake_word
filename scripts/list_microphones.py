@@ -1,7 +1,8 @@
 # list_microphones.py
 # =====================================================
 # Lista los dispositivos de entrada de audio para elegir el
-# valor de MICROPHONE_INDEX en el .env.
+# microfono en el .env: MICROPHONE_NAME (un fragmento del nombre,
+# recomendado) o MICROPHONE_INDEX (el indice de la primera columna).
 #
 # Uso (desde la raiz del proyecto):  python -m scripts.list_microphones
 #
@@ -14,19 +15,7 @@
 
 import pyaudio
 
-from wake_word.config import SAMPLE_RATE
-
-
-def accepts_format(audio: pyaudio.PyAudio, index: int) -> bool:
-    try:
-        return audio.is_format_supported(
-            SAMPLE_RATE,
-            input_device=index,
-            input_channels=1,
-            input_format=pyaudio.paInt16,
-        )
-    except ValueError:
-        return False
+from wake_word.microphone import accepts_format, clean_device_name
 
 
 def main() -> None:
@@ -45,7 +34,7 @@ def main() -> None:
         print(
             f"{i:>3}  {'si' if accepts_format(audio, i) else 'no':<3}  "
             f"{'*' if i == default_index else '':<7}  {api:<22} "
-            f"{int(info['defaultSampleRate']):>6}  {info['name']}"
+            f"{int(info['defaultSampleRate']):>6}  {clean_device_name(info['name'])}"
         )
     audio.terminate()
 

@@ -23,6 +23,12 @@ class ConfigTests(unittest.TestCase):
         with mock.patch.dict(os.environ, {"MICROPHONE_INDEX": "4"}):
             self.assertEqual(config.load_settings().microphone_index, 4)
 
+    def test_microphone_name_is_optional(self):
+        with mock.patch.dict(os.environ, {"MICROPHONE_NAME": ""}):
+            self.assertIsNone(config.load_settings().microphone_name)
+        with mock.patch.dict(os.environ, {"MICROPHONE_NAME": " Arctis "}):
+            self.assertEqual(config.load_settings().microphone_name, "Arctis")
+
     def test_invalid_value_names_the_variable(self):
         with mock.patch.dict(os.environ, {"WAKE_WORD_THRESHOLD": "abc"}):
             with self.assertRaisesRegex(config.ConfigError, "WAKE_WORD_THRESHOLD"):

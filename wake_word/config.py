@@ -99,6 +99,7 @@ class Settings:
     host: str
     port: int
     microphone_index: int | None
+    microphone_name: str | None
     gate_rms: float
 
     @property
@@ -132,5 +133,6 @@ def load_settings() -> Settings:
         host=_read("UNITY_SOCKET_HOST", "127.0.0.1"),
         port=port,
         microphone_index=_read("MICROPHONE_INDEX", "None", _optional_int),
+        microphone_name=_read("MICROPHONE_NAME", "") or None,
         gate_rms=gate_rms,
     )
